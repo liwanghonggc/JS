@@ -1,0 +1,90 @@
+1.JS分3个部分
+  1) ECMAScript,JS的基本语法
+  2) DOM,Document Object Model,文档对象模型
+  3) BOM,Browser Object Model,浏览器对象模型
+
+2、JS是一门运行在客户端的脚本语言,是一门解释性语言,是一门动态类型语言,是一门基于对象的语言.
+   JS是不需要编译的
+
+   编译语言:需要把代码翻译成计算机所认识的二进制语言,才能够执行
+   脚本语言:不需要编译,直接执行
+
+   脚本语言:t-sql,cmd
+
+3、一些快捷键
+  Ctrl Alt L,格式化代码
+
+4、JS中数据类型
+   number、string、boolean、null、undefined、object
+
+5、数字类型
+   1) 不要用小数去验证小数
+      var x = 0.1;
+      var y = 0.1;
+      var sum = x + y;
+      console.log(sum == 0.3) --> false;
+
+   2) 不要用Nan验证是不是NaN
+      如何验证结果是不是NaN,应该使用isNan()
+
+6、绑定事件
+   addEventListener("click", function(){}, false);
+   attachEvent("onclick", function(){});
+
+   绑定事件的区别
+   相同点:都可以为元素绑定事件
+   不同点:
+         1) 参数个数不一样
+         2) addEventListener,谷歌、火狐、IE11支持,IE8不支持
+            attachEvent,谷歌火狐不支持,IE11不支持,IE8支持
+         3) addEventListener中this是当前绑定事件的对象
+            attachEvent中this是window对象
+         4) addEventListener中事件类型没有on,而attachEvent中有
+
+7、解绑事件
+   var input = document.getElementById("input");
+
+   注意:用什么方式绑定事件,就应该用对应的方式解绑事件
+
+   1) 将对象重新绑定事件null,形如input.onclick = null;
+   2) input.removeEventListener()
+   3) input.detachEvent()
+
+8、事件冒泡
+
+   多个元素嵌套,有层次关系,这些标签都注册了相同的事件,如果里面的元素事件触发了,外面元素的该事件自动的触发了
+
+   事件处理函数中即使不传参数,也有一个默认的参数,即事件处理参数对象,记为e
+
+   如何阻止事件冒泡:
+   1) window.event.cancelBubble = true; IE特有,谷歌支持,火狐不支持
+   2) e.stopPropagation(); 谷歌和火狐支持,IE8不支持e对象
+
+   事件有3个阶段
+   1) 事件捕获阶段: 从外向内
+   2) 事件目标阶段
+   3) 事件冒泡阶段: 从里向外
+
+   通过e.eventPhase这个属性可以知道当前事件是什么阶段的,1捕获阶段,3冒泡阶段
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
