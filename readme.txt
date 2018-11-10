@@ -97,7 +97,8 @@
    1) var timeId = setInterval(fun, time): fun为要执行的函数,time为每个多少毫秒执行一次,反复执行
       window.clearInterval(timeId): 清理定时器,参数为定义定时器的返回值
 
-   2) setTimeout(fun, time): 参数及返回值同上,该定时器只执行一次
+   2) var timeId = setTimeout(fun, time): 参数及返回值同上,该定时器只执行一次,用完要清理,否则即使废掉了也占空间
+      clearTimeout(timeId)
 
 15、创建页面元素
    1) document.write()
