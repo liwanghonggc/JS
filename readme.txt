@@ -77,7 +77,21 @@
    2) onunload:页面关闭后才触发的事件,2) 3)谷歌浏览器中没有效果
    3) onbeforeunload:页面关闭之前触发的
 
-11、
+11、location对象
+   location.replace("http://www.jd.com");//没有历史记录
+
+   location.href="http://www.jd.com";
+   location.assign("http://www.jd.com");
+
+12、history对象
+   history.forward():前进
+   history.back():后退
+   history.go():里面可以加参数,正数表示前进,负数后退
+
+13、navigator和platform
+   window.navigator.userAgent,可以判断浏览器类型
+   window.navigator.platform,可以判断浏览器所在的系统平台类型
+
 
 
 
