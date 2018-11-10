@@ -48,6 +48,11 @@
 
     //获取文本框注册键盘抬起事件
     getById("txt").onkeyup = function () {
+        //每次键盘抬起都判断页面中有没有这个div,有则删除
+        if(getById("div")){
+            getById("box").removeChild(getById("div"));
+        }
+
         //获取文本框内容
         var text = this.value;
         //存放要显示的数据
