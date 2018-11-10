@@ -92,6 +92,10 @@
    window.navigator.userAgent,可以判断浏览器类型
    window.navigator.platform,可以判断浏览器所在的系统平台类型
 
+14、定时器
+   1) var timeId = setInterval(fun, time): fun为要执行的函数, time为每个多少毫秒执行一次
+      window.clearInterval(timeId): 清理定时器,参数为定义定时器的返回值
+
 
 
 
