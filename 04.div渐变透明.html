@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+
+<input type="button" value="点击渐变" id="btn">
+
+<script src="common/common.js"></script>
+
+<script>
+    getById("btn").onclick = function () {
+        var opacity = 10;
+
+        var timeId = setInterval(function () {
+            opacity--;
+            if(opacity <= 0){
+                clearInterval(timeId);
+            }
+            getById("div").style.opacity = opacity / 10;
+        }, 200);
+    };
+
+</script>
+
+</body>
+</html>
