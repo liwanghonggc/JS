@@ -105,6 +105,12 @@
    2) innerHTML
    3) document.createElement()
 
+16、小知识点1
+   1) div要移动,要脱离文档流,使用absolute绝对定位
+   2) 如果样式的代码是在style的标签中设置,外面是获取不到.如果样式的代码是在style的属性设置,外面是可以获取
+
+   可以使用getById("div").offsetLeft来获取属性值,不管它是在style标签还是再style属性中都可以获取到.
+
 
 
 

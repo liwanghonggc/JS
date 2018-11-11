@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*div要移动,要脱离文档流,使用absolute绝对定位*/
+        /*如果样式的代码是在style的标签中设置,外面是获取不到*/
+        /*如果样式的代码是在style的属性设置,外面是可以获取*/
+        div {
+            height: 100px;
+            width: 200px;
+            background-color: green;
+            margin-top: 30px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="移动到400px" id="btn1"/>
+    <input type="button" value="移动到800px" id="btn2"/>
+
+    <div id="div"></div>
+
+<script src="common/common.js"></script>
+
+
+<script>
+    getById("btn1").onclick = function () {
+        var left = 0;
+        var timeId = setInterval(function () {
+            left += 20;
+            if(left === 400){
+                clearInterval(timeId);
+            }
+            getById("div").style.left = left + "px";
+        }, 20);
+    };
+</script>
+
+</body>
+</html>
