@@ -117,6 +117,7 @@
     var ulObj = screen.children[0];
     var list = ulObj.children;
     var olObj = screen.children[1];
+    var arr = getById("arr");
 
     //全局变量
     var pic = 0;
@@ -144,6 +145,52 @@
 
     //克隆第一个li
     ulObj.appendChild(ulObj.children[0].cloneNode(true));
+
+    //自动播放
+    var timeId = setInterval(clickHandle, 2000);
+
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timeId);
+    };
+
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timeId = setInterval(clickHandle, 2000);
+    };
+
+    getById("right").onclick = clickHandle;
+
+    function clickHandle() {
+        if(pic === list.length - 1){
+            pic = 0;
+            ulObj.style.left = 0 + "px";
+        }
+        pic++;
+        animate(ulObj, -pic * imgWidth);
+        if(pic === list.length - 1){
+            olObj.children[olObj.children.length - 1].className = "";
+            olObj.children[0].className = "current";
+        }else {
+            for(var i = 0; i < olObj.children.length; i++){
+                olObj.children[i].removeAttribute("class");
+            }
+            olObj.children[pic].className = "current";
+        }
+    };
+
+    getById("left").onclick = function () {
+        if(pic === 0){
+            pic = 5;
+            ulObj.style.left = -pic * imgWidth + "px";
+        }
+        pic--;
+        animate(ulObj, -pic * imgWidth);
+        for(var i = 0; i < olObj.children.length; i++){
+            olObj.children[i].removeAttribute("class");
+        }
+        olObj.children[pic].className = "current";
+    };
 
     function animate(element, target) {
         clearInterval(element.timeId);
