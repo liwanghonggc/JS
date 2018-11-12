@@ -116,13 +116,19 @@
       在style标签中设置的样式属性获取不到,style属性中设置的样式是可以获取到的
       以后获取元素的宽和高,应该使用offset系列来获取
 
-      offsetWidth: 元素的宽
-      offsetHeight: 元素的高
+      offsetWidth: 元素的宽,有边框
+      offsetHeight: 元素的高,含边框
       offsetLeft: 获取元素距离左边位置的值
       offsetTop: 获取元素距离上面位置的值
 
       没有脱离文档流的情况下: offsetLeft为父级元素的margin+padding+border+自己的margin
       脱标情况下: offsetLeft主要是自己的left+margin
+
+   2) scroll系列
+      scrollWidth: 元素中内容实际的宽度,如果无内容(或者内容不足)就是元素的宽
+      scrollHeight: 元素中内容实际的高度,如果无内容就是元素的高
+      scrollTop: 向上卷曲出去的距离
+
 
 18、直接通过document获取元素
     document.body
