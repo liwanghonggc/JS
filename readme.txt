@@ -129,11 +129,25 @@
       scrollHeight: 元素中内容实际的高度,如果无内容就是元素的高
       scrollTop: 向上卷曲出去的距离
 
-
 18、直接通过document获取元素
     document.body
     document.title
     document.documentElements: 获取HTML
+
+19、获取任意一个元素任意一个样式属性的值
+    function getStyle(element, attr){
+        //火狐谷歌支持
+        if(window.getComputedStyle){
+            return window.getComputedStyle(element, null)[attr];
+        }else {
+            return element.currentStyle[attr];
+        }
+    }
+
+    或者简写
+    function getStyle(element, attr){
+        return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr];
+    }
 
 
 
