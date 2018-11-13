@@ -129,6 +129,12 @@
       scrollHeight: 元素中内容实际的高度,如果无内容就是元素的高
       scrollTop: 向上卷曲出去的距离
 
+   3) client系列
+      clientWidth: 可视区域的宽度,不含边框
+      clientHeight:可视区域的高,边框内部
+      clientLeft: 左边框的宽度
+      clientTop: 上边框的宽度
+
 18、直接通过document获取元素
     document.body
     document.title
