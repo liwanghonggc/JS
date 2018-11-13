@@ -155,6 +155,12 @@
    parseInt(str) --> 23
    Number(str)   --> NaN
 
+21、数组的几个方法
+   1) arr.shift():    删除第一个元素
+   2) arr.push():     添加一个元素到最后
+   3) arr.unshift():  添加元素到最前面
+   4) arr.pop():      删除第一个元素
+
 
 
 
