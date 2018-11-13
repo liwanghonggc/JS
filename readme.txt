@@ -167,6 +167,14 @@
    3) arr.unshift():  添加元素到最前面
    4) arr.pop():      删除第一个元素
 
+22、小知识点3
+   1) 阻止默认事件,如点击a链接后禁止跳转
+      return false;
+      e.preventDefault;
+
+   2) 阻止事件冒泡
+      e.stopPropagation();
+      window.event.cancelBubble = true;
 
 
 
