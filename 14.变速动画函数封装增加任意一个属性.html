@@ -36,7 +36,7 @@
         if(window.getComputedStyle){
             return window.getComputedStyle(ele, null)[attr];
         }else {
-            return ele.currentScale[attr];
+            return ele.currentStyle[attr];
         }
     }
 

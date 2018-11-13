@@ -149,8 +149,11 @@
         return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr];
     }
 
+20、小知识点2
+   var str = "23hello";
 
-
+   parseInt(str) --> 23
+   Number(str)   --> NaN
 
 
 
