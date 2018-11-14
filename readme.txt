@@ -182,6 +182,50 @@
     设置鼠标移动的时候,文字不被选中
     window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
 
+24、元素隐藏的几种方式
+   1) obj.style.display = "none";        不占位
+   2) obj.style.visibility = "hidden"    占位
+   3) obj.style.opacity = 0              占位
+   4) obj.style.height = "0px"           占位
+   5) obj.style.border = "0px solid red" 占位
+
+25、创建对象的三种方式
+   1) 字面量的方式
+   var per = {
+         name:"卡卡西",
+         age:20,
+         sex:"男",
+         eat:function () {
+           console.log("吃臭豆腐");
+         };
+   }
+
+   2) 调用系统的构造函数
+   var per = new Object();
+   per.name = "lwh";
+   per.eat = function(){
+     console.log("吃水果");
+   }
+
+   3) 自定义构造函数方式
+   function Person(name, age){
+     this.name = name;
+     this.age = age;
+     this.play = function(){
+       //...
+     };
+   }
+
+   console.log(per instanceof Person);  --> 自定义构造函数创建的对象是可以确定对象的类型的
+
+26、判断这个对象是不是这种数据类型的
+   1) 通过构造器的方式, 实例对象.构造器 == 构造函数名字
+      dog.constructor == Animal
+
+   2) 对象 instanceof 构造函数名字
+      dog insanceof Animal
+
+   看对象的结构: console.dir(obj);
 
 
 
