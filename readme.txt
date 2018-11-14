@@ -255,6 +255,27 @@
       原型 ----> __proto__或者是prototype,都是原型对象
       原型的作用: 共享数据,节省内存空间
 
+   3) 原型的简单写法
+      Student.prototype = {
+         //手动修改构造器的指向
+         constructor:Student,
+         height: "188",
+         weight: "55kg",
+         study: function () {
+           console.log("学习好开心啊");
+         },
+         eat: function () {
+           console.log("我要吃好吃的");
+         }
+       };
+
+      var stu = new Student("段飞",20,"男");
+      stu.eat();
+      stu.study();
+      console.dir(Student);
+      console.dir(stu);
+
+
 
 
 
