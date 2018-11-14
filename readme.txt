@@ -227,6 +227,34 @@
 
    看对象的结构: console.dir(obj);
 
+27、原型
+   1) 通过原型来添加方法,解决数据共享,节省内存空间
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      //通过原型来添加方法,解决数据共享,节省内存空间
+      Person.prototype.eat = function () {
+        console.log("吃凉菜");
+      };
+
+      var p1 = new Person("小明", 20);
+      var p2 = new Person("小红", 30);
+      console.log(p1.eat == p2.eat);  --> true
+
+      console.dir(p1);
+      console.dir(p2);
+
+      实例对象中根本没有eat方法,但是能够使用,这是为什么?
+
+   2) 对象和构造函数中的原型
+      实例对象中有个属性,__proto__,也是对象,叫原型,不是标准的属性,浏览器使用的
+      构造函数中有一个属性,prototype,也是对象,叫原型,是标准属性,程序员使用
+
+      原型 ----> __proto__或者是prototype,都是原型对象
+      原型的作用: 共享数据,节省内存空间
+
 
 
 
