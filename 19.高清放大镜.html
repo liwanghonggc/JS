@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>哈哈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 350px;
+            margin: 100px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .mask {
+            width: 175px;
+            height: 175px;
+            background: rgba(255, 255, 0, 0.4);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            cursor: move;
+            display: none;
+        }
+
+        .small {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="small"><!--小层-->
+        <img src="images/small.png" width="350" alt=""/>
+        <div class="mask"></div><!--遮挡层-->
+    </div><!--小图-->
+
+    <div class="big"><!--大层-->
+        <img src="images/big.jpg" width="800" alt=""/><!--大图-->
+    </div><!--大图-->
+</div>
+<!--导入外部的js文件-->
+<script src="common/common.js"></script>
+<script>
+    var box = getById("box");
+
+    var small = box.children[0];
+    var mask = small.children[1];
+
+    var big = box.children[1];
+    var bigImg = big.children[0];
+
+    //鼠标进入显示遮挡层和大图的div
+    box.onmouseover = function () {
+        mask.style.display = "block";
+        big.style.display = "block";
+    };
+
+    //鼠标离开隐藏遮挡层和大图的div
+    box.onmouseout = function () {
+        mask.style.display = "none";
+        big.style.display = "none";
+    };
+
+    //鼠标移动遮挡层也随着移动
+    small.onmousemove = function (e) {
+        //让鼠标在图片中间
+        var x = e.clientX - mask.offsetWidth / 2;
+        var y = e.clientY - mask.offsetHeight / 2;
+
+        //解决mask的margin问题,若mask无margin,一直找到父元素box,margin -> 100
+        x = x - 100;
+        y = y - 100;
+
+        //遮挡层应当不能移出small的范围
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+        var maxWidth = small.offsetWidth - mask.offsetWidth;
+        var maxHeight = small.offsetHeight - mask.offsetHeight;
+        x = x > maxWidth ? maxWidth : x;
+        y = y > maxHeight ? maxHeight : y;
+
+        mask.style.left = x + "px";
+        mask.style.top = y + "px";
+
+        //遮挡层的移动距离/大图的移动距离 = 遮挡层的最大移动距离/大图的最大移动距离
+        //大图的移动距离 = 遮挡层的移动距离 * 大图的最大移动距离 / 遮挡层的最大移动距离
+
+        //大图的最大横向移动距离
+        var maxBigX = bigImg.offsetWidth - big.offsetWidth;
+
+        //大图的横向移动距离
+        var maxBigMoveX = x * maxBigX / maxWidth;
+        var maxBigMoveY = y * maxBigX / maxWidth;
+
+        bigImg.style.marginLeft = - maxBigMoveX + "px";
+        bigImg.style.marginTop = - maxBigMoveY + "px";
+    };
+
+</script>
+
+
+</body>
+</html>

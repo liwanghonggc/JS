@@ -116,6 +116,8 @@
       在style标签中设置的样式属性获取不到,style属性中设置的样式是可以获取到的
       以后获取元素的宽和高,应该使用offset系列来获取
 
+      直接使用obj.offsetWidth来获取,不是obj.style.offsetWidth
+
       offsetWidth: 元素的宽,有边框
       offsetHeight: 元素的高,含边框
       offsetLeft: 获取元素距离左边位置的值
