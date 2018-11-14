@@ -178,6 +178,10 @@
       e.stopPropagation();
       window.event.cancelBubble = true;
 
+23、小知识点4
+    设置鼠标移动的时候,文字不被选中
+    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
 
 
 
