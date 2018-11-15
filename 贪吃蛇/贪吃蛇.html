@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+    <style>
+        .map {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="map"></div>
+
+    <script src="../common/common.js"></script>
+
+    <script>
+
+        (function () {
+            //用来保存每个小方块食物的
+            var elements = [];
+
+            function Food(x, y, width, height, color) {
+                this.x = x || 0;
+                this.y = y || 0;
+                this.width = width || 20;
+                this.height = height || 20;
+                this.color = color || "green";
+            }
+
+            Food.prototype.init = function(map) {
+                //创建div
+                var div = document.createElement("div");
+                //将div加到map中
+                map.appendChild(div);
+
+                //设置div样式
+                div.style.width = this.width + "px";
+                div.style.height = this.height + "px";
+                div.style.backgroundColor = this.color;
+
+                div.style.position = "absolute";
+
+                this.x = parseInt(Math.random() * (map.offsetWidth / this.width)) * this.width;
+                this.y = parseInt(Math.random() * (map.offsetHeight / this.height)) * this.height;
+
+                div.style.left = this.x + "px";
+                div.style.top = this.y + "px";
+
+                //将div放到elements中
+                elements.push(div);
+            };
+
+            //把食物暴露给window,外部可以使用
+            window.Food = Food;
+        }());
+
+        var food = new Food();
+        food.init(document.querySelector(".map"));
+
+    </script>
+
+</body>
+</html>
