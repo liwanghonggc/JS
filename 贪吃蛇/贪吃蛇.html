@@ -95,6 +95,8 @@
 
             //为原型添加方法,小蛇初始化方法
             Snake.prototype.init = function (map) {
+                remove();
+
                 //循环遍历创建div
                 for(var i = 0; i < this.body.length; i++){
                     //创建div并加入到地图中
@@ -135,21 +137,64 @@
                 }
             };
 
+            //删除小蛇的私有函数
+            function remove(){
+                var i = elements.length - 1;
+                for(; i >= 0; i--){
+                    var ele = elements[i];
+                    ele.parentNode.removeChild(ele);
+                    elements.splice(i, 1);
+                }
+            }
+
             window.Snake = Snake;
 
         }());
 
+        //游戏的自调用函数
+        (function () {
+            //游戏的构造函数
+            var that = null;
+
+            function Game(map) {
+                this.food = new Food();
+                this.snake = new Snake();
+                this.map = map;
+                that = this;
+            }
+
+            //初始化游戏
+            Game.prototype.init = function () {
+                this.food.init(this.map);
+                this.snake.init(this.map);
+                this.runSnake(this.food, this.map);
+            };
+
+            //添加原型方法,小蛇可以自动的跑起来
+            Game.prototype.runSnake = function(food, map){
+                setInterval(function () {
+                    this.snake.move(this.map, this.food);
+                    this.snake.init(this.map);
+                }.bind(that), 150);
+            };
+
+            window.Game = Game;
+        }());
+
         var map = document.querySelector(".map");
-        //创建食物并初始化
-        var food = new Food();
-        food.init(map);
+        // //创建食物并初始化
+        // var food = new Food();
+        // food.init(map);
+        //
+        // //创建小蛇并初始化
+        // var snake = new Snake();
+        // snake.init(map);
+        //
+        // snake.move(map, food);
+        // snake.init(map);
 
-        //创建小蛇并初始化
-        var snake = new Snake();
-        snake.init(map);
-
-        snake.move(map, food);
-        snake.init(map);
+        var game = new Game(map);
+        game.init();
 
     </script>
 
