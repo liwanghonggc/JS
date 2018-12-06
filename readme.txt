@@ -306,6 +306,28 @@
 29、原型链
     原型链是一种关系,实例对象和原型对象之间的关系,关系是通过原型(_proto_)来联系的
 
+    1) 实例对象的原型_proto_和构造函数的原型prototype指向是相同的,
+       实例对象中的_proto_原型指向的是构造函数中的原型prototype
+       per._proto_ == Person.prototype --> true
+
+    2) 构造函数和原型对象中的this指向
+       构造函数中的this就是实例对象,原型对象中方法中的this就是实例对象
+       function Person(age){
+         this.age = age;
+         console.log(this);
+       }
+
+       Person.prototype.eat = function(){
+         console.log(this);
+       }
+       两个this指向的是同一个对象,即实例对象
+
+    2) 原型的指向是否可以改变
+           实例对象的原型_proto_指向的是该对象所在的构造函数的原型对象,构造函数的原型对象prototype指向如果改变了,
+       实例对象的原型_proto_指向也会发生改变
+
+           原型的指向可以改变,实例对象和原型对象之间的关系是通过_proto_原型来联系起来的,这个关系就是原型链
+
 
 
 
