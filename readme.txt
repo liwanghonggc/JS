@@ -257,7 +257,7 @@
 
    3) 原型的简单写法
       Student.prototype = {
-         //手动修改构造器的指向
+         //简单的原型写法,缺少构造器,自己手动加上,手动修改构造器的指向
          constructor:Student,
          height: "188",
          weight: "55kg",
@@ -279,6 +279,14 @@
       a) 原型中的方法可以互相访问
       b) 实例对象使用的属性或者方法,先在实例中查找,找到了则直接使用,找不到则去实例
          对象的__proto__指向的原型对象prototype中找,找到了则使用,找不到则报错
+
+   5) 为内置对象添加方法
+      String.prototype.sayHi = function(){
+          console.log("字符串");
+      };
+
+      var str = "hello";
+      str.sayHi();
 
 28、函数的自调用
 
