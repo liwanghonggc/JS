@@ -322,13 +322,13 @@
        }
        两个this指向的是同一个对象,即实例对象
 
-    2) 原型的指向是否可以改变
+    3) 原型的指向是否可以改变
            实例对象的原型_proto_指向的是该对象所在的构造函数的原型对象,构造函数的原型对象prototype指向如果改变了,
        实例对象的原型_proto_指向也会发生改变
 
            原型的指向可以改变,实例对象和原型对象之间的关系是通过_proto_原型来联系起来的,这个关系就是原型链
 
-    3) 原型最终指向了哪里?
+    4) 原型最终指向了哪里?
            实例对象中有_proto_原型,构造函数中有prototype原型,prototype也是对象,所以prototype这个对象中也有_proto_,
        那么它指向了哪里?
 
@@ -337,6 +337,11 @@
        console.log(per.__proto__ == Person.prototype);                --> true
        console.log(Person.prototype.__proto__ == Object.prototype);   --> true
        console.log(Object.prototype.__proto__);                       --> null
+
+    5) 如果原型指向改变了,那么应该在原型改变指向之后添加原型方法
+
+30、继承
+    1) 原型作用之二:实现继承
 
 
 
