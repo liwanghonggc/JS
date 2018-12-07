@@ -394,6 +394,47 @@
 
       所有的函数实际上都是Function的构造函数创建出来的实例对象
 
+32、apply和call的使用:可以改变this的指向
+
+   function f(x, y){
+       console.log("结果是: " + (x + y) + this);
+   }
+   f(10, 20); --> 函数的调用
+
+   1)不传参数或者传null
+       f.apply();
+       f.call();
+
+       f.apply(null);
+       f.call(null);
+
+       apply和call方法中如果没有传入参数,或者是传入的是null,那么调用该方法的函数对象中的this就是默认的window
+
+   2) 传参
+      function Person(age, sex){
+          this.age = age;
+          this.sex = sex;
+      }
+      Person.prototype.sayHi = function(x, y){
+          console.log(this.sex);
+      };
+
+      var per = new Person(10, "男");
+      per.sayHi(); --> 男
+
+      function Student(name, sex){
+          this.name = name;
+          this.set = sex;
+      }
+
+      var stu = new Student("小明", "人妖");
+
+      //两个都可以改变this指向,此时sayHi中的this对象为stu
+      per.sayHi.apply(stu, [10, 20]); --> 人妖
+      per.sayHi.call(stu, 10, 20); --> 人妖
+
+
+
 
 
 
