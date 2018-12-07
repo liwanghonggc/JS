@@ -433,6 +433,30 @@
       per.sayHi.apply(stu, [10, 20]); --> 人妖
       per.sayHi.call(stu, 10, 20); --> 人妖
 
+   3) apply和call到底是谁的?
+      它们并不在函数这个实例对象中,而是在Function的prototype中
+
+33、bind方法
+    复制一份,改变了this的指向
+
+    function Person(){
+        this.age = age;
+    }
+    Person.prototype.play = function(){
+        console.log(this.age);
+    };
+
+    function Student(age){
+        this.age = age;
+    }
+
+    var per = new Person(10);
+    var stu = new Student(20);
+
+    //复制了一份,将this指向改为传入的参数stu
+    var f = per.play.bind(stu);
+    f(); --> 20
+
 
 
 
