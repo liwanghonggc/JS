@@ -365,6 +365,25 @@
                               以后宁愿用函数表达式,都不用函数声明
 
    2) 函数中this指向问题
+      a) 普通函数中的this指向?
+         function f(){
+            console.log(this);  --> window
+         }
+
+      b) 定时器中this的指向?
+         setInterval(function(){
+            console.log(this);  --> window
+         }, 1000);
+
+      c) 构造函数中this的指向?
+         function Person(){
+            console.log(this)   --> 实例对象
+         }
+
+      d) 对象.方法中的this指向?   --> 当前的实例对象
+
+      e) 原型对象的方法中this指向? --> 实例对象
+
 
 
 
