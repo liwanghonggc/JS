@@ -394,6 +394,24 @@
 
       所有的函数实际上都是Function的构造函数创建出来的实例对象
 
+   4) 函数作为参数
+      function f(fn){
+          console.log("f的函数");
+          fn();
+      }
+
+      传入匿名函数
+      f(function(){
+          console.log("我是匿名函数");
+      });
+
+      命名函数
+      function f2(){
+          console.log("f2的函数");
+      }
+      f(f2);
+      函数作为参数的时候,如果是命名函数,那么只传入命名函数的名字,不要加括号,否则就是将命名函数的返回值作为参数了
+
 32、apply和call的使用:可以改变this的指向
 
    function f(x, y){
