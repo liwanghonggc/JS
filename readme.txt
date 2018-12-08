@@ -412,6 +412,17 @@
       f(f2);
       函数作为参数的时候,如果是命名函数,那么只传入命名函数的名字,不要加括号,否则就是将命名函数的返回值作为参数了
 
+   5) 函数作为返回值
+      function f1(){
+          console.log("f1函数开始");
+          return function(){
+              console.log("函数的返回值");
+          }
+      }
+
+      var ff = f1();
+      ff();
+
 32、apply和call的使用:可以改变this的指向
 
    function f(x, y){
