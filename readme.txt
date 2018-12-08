@@ -524,6 +524,24 @@
       }
       f1();
 
+   3) 预解析,就是在浏览器解析代码之前,把变量的声明和函数的声明提前到该作用域的最外面
+
+      //变量的提升
+      console.log(num);  --> undefined;
+      var num = 10;
+
+      //函数的声明提前
+      f();  --> 正常输出
+      function f(){
+          console.log("这个函数,执行了");
+      }
+
+      //这样会报错
+      f();
+      var f = function(){
+          console.log("不能正常执行");
+      }
+
 
 
 
