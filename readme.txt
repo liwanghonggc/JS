@@ -457,6 +457,15 @@
     var f = per.play.bind(stu);
     f(); --> 20
 
+34、函数中几个成员
+    function f(x,y) {
+         console.log(f.name);               --> 函数名,不可修改
+         console.log(f.arguments.length);   --> 函数实参个数
+         console.log(f.length);             --> 函数形参个数
+         console.log(f.caller);             --> 调用者
+    }
+
+
 
 
 
