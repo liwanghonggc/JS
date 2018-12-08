@@ -494,6 +494,37 @@
          console.log(f.caller);             --> 调用者
     }
 
+35、作用域
+   1) JS中没有块级作用域,一对括号中定义的变量,在大括号外面也可以使用
+      while(true){
+          var num = 10;
+          break;
+      }
+      console.log(num);  --> 10,可以访问
+
+      {
+          var num = 100;
+      }
+      console.log(num);  --> 100,可以访问
+
+      function f(){
+          //这个是局部变量,外面不可以访问
+          var num = 10;
+      }
+
+   2) 作用域链,变量的使用,从里往外,层层搜索,搜索到了就可以直接使用了
+      var num = 10;
+      function f1(){
+          var num = 20;
+          function f2(){
+              var num = 30;
+              console.log(num);
+          }
+          f2();
+      }
+      f1();
+
+
 
 
 
